@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="stylesheets/register.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>register</title>
+</head>
+
+<body>
+    <main class="w-full min-w-[400px] min-h-screen text-white p-10 bg-zinc-900">
+
+        <div class="nav w-full flex justify-between">
+            <h3 class="text-3xl font-light">Welcome To Postify 🤝</h3>
+
+            <form class="flex-end w-1/8 " action="/login" method="get">
+                <button type="submit"
+                    class="w-1/2 px-2 py-2 min-w-[60px] flex justify-center text-white items-center  text-sm bg-blue-700  outline-none rounded-md">Login</button>
+            </form>
+        </div>
+        <h3 class="text-3xl mt-4 w-full flex justify-center font-light">Register and start having fun</h3>
+        <div class="form-body flex  w-full justify-center mt-10">
+            <form class="w-1/2 flex justify-center flex-wrap border-zinc-600 gap-2" action="/register" method="post">
+                <input
+                    class="w-1/3 min-w-[225px] outline-none text-md py-2 mb-2  px-2  border-[1px] border-zinc-600 rounded-md bg-zinc-700 "
+                    type="text" placeholder="Name" name="name" required>
+                <input
+                    class="w-1/3 outline-none min-w-[225px] text-md py-2 mb-2  px-2  border-[1px] border-zinc-600 rounded-md bg-zinc-700 "
+                    type="text" placeholder="Username" name="username" required>
+                <input
+                    class="w-1/3 outline-none min-w-[225px] text-md py-2 mb-2  px-2  border-[1px] border-zinc-600 rounded-md bg-zinc-700 "
+                    type="email" placeholder="Email" name="email" required>
+                <input
+                    class="w-1/3 outline-none min-w-[225px] text-md py-2 mb-2  px-2  border-[1px] border-zinc-600 rounded-md bg-zinc-700 "
+                    type="password" placeholder="Password" name="password" required>
+                <input
+                    class="w-1/3 outline-none min-w-[225px] text-md py-2 mb-2  px-2  border-[1px] border-zinc-600 rounded-md bg-zinc-700 "
+                    type="number" placeholder="Age" name="age">
+                <button
+                    class="w-1/3 py-2 px-2  mb-2 min-w-[105px] text-sm text-black bg-yellow-500 outline-none rounded-md"
+                    type="submit">Register
+                </button>
+
+
+            </form>
+            <% if (locals.user) { %>
+                <p class="text-md text-red-300 m-2 ">user already exist</p>
+                <% } %>
+
+
+        </div>
+    </main>
+
+
+</body>
+
+</html>

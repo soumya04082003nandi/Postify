@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>profile page</title>
+</head>
+
+<body>
+    <div class="w-full min-w-[400px] min-h-screen text-white p-10 bg-zinc-900">
+        <div class="nav-bar flex w-full justify-end">
+            <a href="/logout" class=" px-3 py-1.5 text-sm  bg-red-500 rounded-md">Logout</a>
+        </div>
+        <h5 class="text-md mt-1 ">Update your post here</h5>
+        <form action="/update/<%= post._id %>" method="post">
+            <textarea name="content" id=""
+                class="mt-5 min-w-[225px]  p-3 w-1/3 resize-none bg-zinc-800 border-2 border-zinc-700 rounded-md outline-none block"
+                placeholder="Write whatever you want"><%= post.content %>
+            </textarea>
+            <% if (locals.empty_content) { %>
+                <h5 class="text-md text-red-300 m-2">Can't create an empty post !!</h5>
+                
+            <% } %>
+
+            <button type="submit" class="px-3 py-2 mt-2 text-md text-black bg-yellow-500 w-35 rounded-md block ">Update
+                Now</button>
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>
