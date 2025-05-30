@@ -13,7 +13,7 @@ const dotenv=require("dotenv");
 
 
 
-//LOAD ENV FILE
+//LOAD ENV FILE  
 dotenv.config();
 
 //datebase connection

@@ -93,7 +93,12 @@ const handleProfilePge = async (req, res) => {
     res.render("profile", { user, totalPosts })
 }
 
-//profile 
+//profile -info page
+const handleProfileInfo=async(req,res)=>{
+    const user = await userModels.findOne({ email: req.user.email }).populate("post");
+
+    res.render("profile-info",{user})
+}
 
 //Post creation feature
 const handlePostCreation = async (req, res) => {
@@ -182,5 +187,6 @@ module.exports = {
     handleLikeThePost,
     handleEditThePost,
     handleUpdateThePost,
-    handleDeletePost
+    handleDeletePost,
+    handleProfileInfo
 };
