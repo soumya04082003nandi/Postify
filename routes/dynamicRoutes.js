@@ -9,7 +9,7 @@ const{handleRegisterUser,
     handleEditThePost, 
     handleUpdateThePost,
     handleDeletePost,
-    handleProfileInfo   }=require("../controllers/dynamicControllers");
+    handleAcount   }=require("../controllers/dynamicControllers");
 const{isLogedin}=require("../services/auth");
 
 
@@ -40,7 +40,7 @@ router.get("/logout",handleLogoutUser);
 router.get("/profile",isLogedin,handleProfilePge);
 
 //profile-info page handeling
-router.get("/profile-info/:id",isLogedin,handleProfileInfo)
+router.get("/acount/:id",isLogedin,handleAcount)
 
 
 
