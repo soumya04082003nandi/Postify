@@ -6,33 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="stylesheets/register.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
     <title>register</title>
 </head>
 
 <body>
     <main class="w-full flex flex-col items-center min-h-screen min-w-[400px] text-white p-10 bg-zinc-900">
-        <div class="nav-bar flex w-full justify-between mb-5">
+        <div class="nav-bar flex w-full items-center justify-between mb-5">
             <h3 class="text-3xl"><span class="font-light ">Hello, <%= user.name %>👋🏻</span></h3>
-            <div class="btns">
-                <a href="/profile" class=" px-3 py-1.5 text-sm  bg-yellow-500 text-black mr-5 rounded-md">Back</a>
-                <a href="/logout" class=" px-3 py-1.5 text-sm  bg-red-500 rounded-md">Logout</a>
+            <div class="btns ">
+                <a href="/profile" class=" px-3 py-1.5 text-sm  bg-yellow-500 text-black mr-5 rounded-md">Profile</a>
+                <a href="/logout" class=" px-3 py-1.5 text-sm  bg-red-500 rounded-md">Logout</a>     
 
             </div>
         </div>
         <div
             class="hero w-[80%] min-h-screen min-w-[340px] p-10 bg-zinc-900 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,10)]">
             <div class="profilepic w-full flex  justify-center ">
-                <img class=" object-cover w-20 h-20 rounded-lg" src="/images/uploads/<%= user.profilepic %>" alt="">
+                <img class=" object-cover w-30 h-30 rounded-[50%] border-4 border-green-600" src="/images/uploads/<%= user.profilepic %>" alt="">
             </div>
-            <form class="w-full flex justify-center " action="">
+            <h5 class="w-full flex justify-center mt-2 text-blue-600 text-sm ">@<%= user.username %></h5>
+            <form class="w-full flex justify-center " action="/upload" method="post"  enctype="multipart/form-data">
                 <label class="mr-5" for="dp">
                     <h4 class="text-sm border-2 border-zinc-600 bg-zinc-800 px-2 py-2 rounded-md mt-4 block">Upload a new Profile Picture</h4>
                 </label>
+                <input id="dp" class="hidden " name="profilepic" type="file" required accept=".jpg, .jpeg, .png, ">
                 <button class="flex px-2 py-2 items-center justify-center mt-2 text-sm bg-blue-600 mt-4 w-35 rounded-md " type="submit">Confirm</button>
             </form>
-
-            <input id="dp" class="hidden " type="file" accept=".jpg, .jpeg, .png, ">
+           
             <h3 class="text-md font-light mb-5 mt-5 text-zinc-300">All posts</h3>
             <div class="all-posts flex flex-wrap gap-5">
                 <% user.post.reverse().forEach(post=> { %>
@@ -60,8 +60,7 @@
                                     <%= (post.likes.indexOf(user._id)===-1)?"🤍":"💙" %>
                                 </p>
 
-                                <a class="text-zinc-600 ml-3" href="/edit/<%= post._id %>">Edit</a>
-                                <a class="text-red-700 ml-3 " href="/delete/<%= post._id %>">Remove</a>
+                                
 
                             </div>
                         </div>

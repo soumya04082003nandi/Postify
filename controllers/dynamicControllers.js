@@ -93,17 +93,7 @@ const handleProfilePge = async (req, res) => {
     res.render("profile", { user, totalPosts })
 }
 
-//profile -info page
-const handleAcount=async(req,res)=>{
-    const user = await userModels.findOne({ email: req.user.email }).populate("post");
 
-    console.log(user);
-    
-
-    
-    res.render("acount",{user})
-    
-}
 
 //Post creation feature
 const handlePostCreation = async (req, res) => {
@@ -181,6 +171,25 @@ const handleUpdateThePost = async (req, res) => {
     
 }
 
+//acount  page (rendering)
+const handleAcount=async(req,res)=>{
+    const user = await userModels.findOne({ email: req.user.email }).populate("post");
+    res.render("acount",{user})
+    
+}
+
+//Acount page dp uploading
+const handleSaveProfilepic=async(req,res)=>{
+    if (req.file.filename ) {
+        const user=await userModels.findOneAndUpdate({email:req.user.email},{profilepic:req.file.filename})
+        res.redirect("/acount/:id")
+    }else{
+        return res.render("acount",{emptyFile:1});
+    }
+    
+    
+}
+
 
 
 module.exports = {
@@ -193,5 +202,6 @@ module.exports = {
     handleEditThePost,
     handleUpdateThePost,
     handleDeletePost,
-    handleAcount
+    handleAcount,
+    handleSaveProfilepic
 };

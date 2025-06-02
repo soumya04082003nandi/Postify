@@ -9,8 +9,14 @@ const{handleRegisterUser,
     handleEditThePost, 
     handleUpdateThePost,
     handleDeletePost,
-    handleAcount   }=require("../controllers/dynamicControllers");
+    handleAcount,
+    handleSaveProfilepic   }=require("../controllers/dynamicControllers");
+
+//Login checking
 const{isLogedin}=require("../services/auth");
+
+//Multer file upload
+const {upload}=require("../config/multer")
 
 
 
@@ -39,8 +45,11 @@ router.get("/logout",handleLogoutUser);
 //Profile page handaling
 router.get("/profile",isLogedin,handleProfilePge);
 
-//profile-info page handeling
-router.get("/acount/:id",isLogedin,handleAcount)
+//Acount page handeling (rendering)
+router.get("/acount/:id",isLogedin,handleAcount);
+
+//handeling profile pic upload
+router.post("/upload",isLogedin,upload.single("profilepic"),handleSaveProfilepic);
 
 
 
